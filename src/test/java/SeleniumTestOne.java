@@ -53,20 +53,23 @@ public class SeleniumTestOne {
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/");
         WebElement redDuck = driver.findElement(By.cssSelector("img[alt='Red Duck']"));
-        WebElement logoButton = driver.findElement(By.cssSelector("img[alt='My Store']"));
         Actions actions = new Actions(driver);
-        actions.moveToElement(redDuck).click(redDuck).moveByOffset(300,0).
-                moveByOffset(0,-300).perform();
+        actions.moveToElement(redDuck).click(redDuck).perform();
+        WebElement addToCartButton = driver.findElement(By.cssSelector("button[name='add_cart_product']"));
+        actions.click(addToCartButton).perform();
 
     }
+
+
     public void nextActionsTest() {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://litecart.stqa.ru/en/");
-
-        WebElement redDuck = driver.findElement(By.cssSelector("img[alt='Red Duck']"));
+        WebElement blueDuck = driver.findElement(By.cssSelector("img[alt='Blue Duck']"));
         Actions actions = new Actions(driver);
-        actions.clickAndHold(redDuck).release().contextClick().perform();
+        actions.clickAndHold(blueDuck).release().perform();
+        WebElement logoButton = driver.findElement(By.cssSelector("img[alt='My Store']"));
+        actions.sendKeys(logoButton).perform();
 
     }
 
