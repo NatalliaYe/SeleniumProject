@@ -17,29 +17,29 @@ public class Locators {
         try {
             props.load(is);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to load locators.properties", e);
         }
     }
 
     public static By getLocator(String elementName) throws Exception {
 
-        String[] locator = props.getProperty(elementName).split("=", 2);
 
-        switch(locator[0]) {
-            case "name" -> {
-                return By.name(locator[1]);
-            }
-            case "css" -> {
-                return By.cssSelector(locator[1]);
-            }
-            case "linkText" -> {
-                return By.linkText(locator[1]);
-            }
-            case "tagName" -> {
-                return By.tagName(locator[1]);
-            }
-            default -> throw new Exception("No such locator type");
+        String[] locator = props.getProperty(elementName).split("=", 2);
+        if (locator.length != 2)  {
+            throw new IllegalArgumentException("Invalid locator format for: " + elementName);
         }
+
+        return switch(locator[0]) {
+            case "name" -> By.name(locator[1]);
+            case "css" -> By.cssSelector(locator[1]);
+            case "linkText" -> By.linkText(locator[1]);
+            case "tagName" ->By.tagName(locator[1]);
+            case "className" ->By.className(locator[1]);
+            case "xpath" ->By.xpath(locator[1]);
+            case "id" ->By.id(locator[1]);
+
+            default -> throw new Exception("No such locator type" + locator[0]);
+        };
 
     }
 }
