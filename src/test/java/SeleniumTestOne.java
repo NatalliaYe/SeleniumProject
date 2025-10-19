@@ -12,15 +12,14 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.Objects;
 
-@Test
+
 public class SeleniumTestOne {
 
     public void actionsTestOne(){
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/");
         WebElement homeButton = driver.findElement(By.className("fa-home"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(homeButton).click(homeButton).perform();
+        homeButton.click();
         String pageTitle = driver.getTitle();
         Assert.assertTrue(Objects.equals(pageTitle, "Online Store | My Store"));
 
@@ -30,11 +29,11 @@ public class SeleniumTestOne {
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/");
         WebElement headerLink = driver.findElement(By.cssSelector("[class='category-1']"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(headerLink).click(headerLink).perform();
+        headerLink.click();
         String pageTitle = driver.getTitle();
         Assert.assertEquals(pageTitle, "Rubber Ducks | My Store");
     }
+
 
 
     public void actionsTestThree() {
@@ -49,14 +48,14 @@ public class SeleniumTestOne {
 
     }
 
+
     public void differentActionsTest() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://litecart.stqa.ru/en/");
         WebElement redDuck = driver.findElement(By.cssSelector("img[alt='Red Duck']"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(redDuck).click(redDuck).perform();
+        redDuck.click();
         WebElement addToCartButton = driver.findElement(By.cssSelector("button[name='add_cart_product']"));
-        actions.click(addToCartButton).perform();
+        addToCartButton.click();
 
     }
 
@@ -66,10 +65,9 @@ public class SeleniumTestOne {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://litecart.stqa.ru/en/");
         WebElement blueDuck = driver.findElement(By.cssSelector("img[alt='Blue Duck']"));
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(blueDuck).release().perform();
+        blueDuck.click();
         WebElement logoButton = driver.findElement(By.cssSelector("img[alt='My Store']"));
-        actions.sendKeys(logoButton).perform();
+        logoButton.click();
 
     }
 
