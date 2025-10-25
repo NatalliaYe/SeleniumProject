@@ -3,17 +3,20 @@ package selenide;
 import com.codeborne.selenide.AssertionMode;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.testng.SoftAsserts;
+import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-@Listeners({SoftAsserts.class})
+
 @Feature("Login tests")
+//@Listeners(SoftAsserts.class)
 public class LoginTests extends TestBase {
 
 
@@ -21,10 +24,8 @@ public class LoginTests extends TestBase {
     @Description("When user enters correct credentials, clicks Login button homepage opens")
     @Test(description = "Correct credentials test")
     public void correctCredentialsTest() throws Exception {
-        LoginPage loginPage = new LoginPage();
-        SuccessLoginPage successLoginPage = new SuccessLoginPage();
 
-        loginPage.login("natalyhubchuk@gmail.com","Test-01" );
+        SuccessLoginPage successLoginPage = new SuccessLoginPage();
 
         Configuration.assertionMode = AssertionMode.SOFT;
 
@@ -37,6 +38,7 @@ public class LoginTests extends TestBase {
     @Description("When user enters with one field empty, error message appears")
     @Test(description = "Empty file message text")
     public void emptyFieldMessageTest() throws Exception {
+        open("https://litecart.stqa.ru/en/login");
         LoginPage loginPage = new LoginPage();
         EmptyFieldPage emptyFieldPage = new EmptyFieldPage();
 

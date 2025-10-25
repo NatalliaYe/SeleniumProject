@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 import static newObjectTest.Locators.getLocator;
 
-@Feature("Correct error message after logging in with empty field ")
+
 public class EmptyFieldPage {
 
     @Step("Check system message is visible after logging in with empty field ")

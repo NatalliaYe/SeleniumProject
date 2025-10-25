@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 import static newObjectTest.Locators.getLocator;
 
-@Feature("Open catalog page")
+
 public class CatalogPage {
 
 
