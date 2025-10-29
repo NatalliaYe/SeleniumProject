@@ -7,6 +7,7 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
 
 @Feature("Cart page")
@@ -16,7 +17,6 @@ public class CartTest extends TestBase {
     @Description("When user clicks  cart button cart page opens")
     @Test(description = "Open cart test")
     public void openCartTest() throws Exception {
-
         CartPage cartPage = new CartPage();
 
         cartPage.clickCartButton();

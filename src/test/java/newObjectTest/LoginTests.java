@@ -8,11 +8,9 @@ public class LoginTests extends TestBase {
 
 
     @Test
-    public void correctCredentialsTest() {
-        LoginPage loginPage = new LoginPage(driver);
-        SuccessLoginPage successLoginPage = new SuccessLoginPage(driver);
+    public void correctCredentialsTest() throws IllegalArgumentException {
 
-        loginPage.login("natalyhubchuk@gmail.com","Test-01" );
+        SuccessLoginPage successLoginPage = new SuccessLoginPage(driver);
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(successLoginPage.successMessageIsVisible());
@@ -24,10 +22,11 @@ public class LoginTests extends TestBase {
     }
 
     @Test
-    public void emptyFieldMessageTest() {
+    public void emptyFieldMessageTest() throws IllegalArgumentException {
         LoginPage loginPage = new LoginPage(driver);
         EmptyFieldPage emptyFieldPage = new EmptyFieldPage(driver);
 
+        driver.get ("https://litecart.stqa.ru/en/login");
         loginPage.login("natalyhubchuk@gmail.com","" );
 
         SoftAssert softAssert = new SoftAssert();

@@ -12,7 +12,7 @@ public class CatalogTest extends TestBase {
         CatalogPage catalogPage = new CatalogPage(driver);
 
         catalogPage.rubberDucksButton();
-        String pageTitle =  title();
+        String pageTitle = driver.getTitle();
         Assert.assertEquals(pageTitle, "Rubber Ducks | My Store");
 
     }

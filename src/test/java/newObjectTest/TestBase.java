@@ -27,10 +27,10 @@ public class TestBase {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(5));
         driver.manage().window().maximize();
-        driver.get ("https://litecart.stqa.ru/en/");
+
+        driver.get ("https://litecart.stqa.ru/en/login");
 
         LoginPage loginPage = new LoginPage(driver);
-
         loginPage.login("natalyhubchuk@gmail.com", "Test-01");
     }
 

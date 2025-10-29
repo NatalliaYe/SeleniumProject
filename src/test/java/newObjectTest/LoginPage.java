@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
-    private By loginField = By.cssSelector("[name='email']");
+    private By loginField = By.name("email");
     private By passwordField = By.name("password");
     private By loginButton = By.name("login");
 

@@ -14,7 +14,7 @@ public class CartTest extends TestBase {
 
         cartPage.clickCartButton();
 
-        String pageTitle = title();
+        String pageTitle = driver.getTitle();
         Assert.assertEquals(pageTitle, "Checkout | My Store");
 
     }

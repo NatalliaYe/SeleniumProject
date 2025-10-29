@@ -23,14 +23,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.codeborne.selenide.Browsers.CHROME;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 
 
 @Feature("UI tests")
 //@Listeners({ SoftAsserts.class, ReportPortalTestNGListener.class })
 public class TestBase {
-
 
     @BeforeMethod
     public void setup() throws Exception {
@@ -38,7 +37,8 @@ public class TestBase {
         String browser = System.getProperty("browser", "chrome");
         String os = System.getProperty("os", "windows");
 
-        caps.setBrowserName(CHROME);
+        caps.setBrowserName("chrome");
+
         switch (os.toLowerCase()) {
             case "win11", "win" -> caps.setPlatform(Platform.WINDOWS);
             case "mac" -> caps.setPlatform(Platform.MAC);
@@ -46,27 +46,25 @@ public class TestBase {
             default -> caps.setPlatform(Platform.ANY);
         }
 
-        Map<String, Object> sauceOptions = new HashMap<>();
-        sauceOptions.put("username", "oauth-natalyhubchuk-9cca5");
-        sauceOptions.put("accessKey", "2df357b1-b1f7-4487-a453-007b11b36576");
-        sauceOptions.put("build", "<My Selenide build 1.1>");
-        sauceOptions.put("name", "<Regression>");
-        caps.setCapability("sauce:options", sauceOptions);
+//        Map<String, Object> sauceOptions = new HashMap<>();
+//        sauceOptions.put("username", "oauth-natalyhubchuk-9cca5");
+//        sauceOptions.put("accessKey", "2df357b1-b1f7-4487-a453-007b11b36576");
+//        sauceOptions.put("build", "<My Selenide build 1.1>");
+//        sauceOptions.put("name", "<Regression>");
+//        caps.setCapability("sauce:options", sauceOptions);
 
-
-        Configuration.browser = "browser";
-        Configuration.remote = "https://oauth-natalyhubchuk-9cca5:2df357b1-b1f7-4487-a453-007b11b36576@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+//        Configuration.remote = "http://192.168.0.100:4444/wd/hub";
         Configuration.browserCapabilities = caps;
         Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 8000;
+        Configuration.timeout = 7000;
         Configuration.pageLoadTimeout = 15000;
+
 
         open("https://litecart.stqa.ru/en/login");
 
         LoginPage loginPage = new LoginPage();
         loginPage.login("natalyhubchuk@gmail.com", "Test-01");
 
-        System.out.println("Current URL: " + WebDriverRunner.url());
     }
 
     @AfterMethod
