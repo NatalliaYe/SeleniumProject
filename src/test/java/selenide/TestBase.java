@@ -53,7 +53,7 @@ public class TestBase {
 //        sauceOptions.put("name", "<Regression>");
 //        caps.setCapability("sauce:options", sauceOptions);
 
-//        Configuration.remote = "http://192.168.0.100:4444/wd/hub";
+        Configuration.remote = "http://192.168.56.1:4444/wd/hub";
         Configuration.browserCapabilities = caps;
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 7000;
