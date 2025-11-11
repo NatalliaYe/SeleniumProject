@@ -34,10 +34,10 @@ public class TestBase {
     @BeforeMethod
     public void setup() throws Exception {
         DesiredCapabilities caps = new DesiredCapabilities();
-        String browser = System.getProperty("browser", "chrome");
+        String browser = System.getProperty("browser", "firefox");
         String os = System.getProperty("os", "windows");
 
-        caps.setBrowserName("chrome");
+        caps.setBrowserName("firefox");
 
         switch (os.toLowerCase()) {
             case "win11", "win" -> caps.setPlatform(Platform.WINDOWS);
