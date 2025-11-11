@@ -35,9 +35,9 @@ public class TestBase {
     public void setup() throws Exception {
         DesiredCapabilities caps = new DesiredCapabilities();
         String browser = System.getProperty("browser", "firefox");
-        String os = System.getProperty("os", "windows");
+        String os = System.getProperty("os", "linux");
 
-        caps.setBrowserName("firefox");
+        caps.setBrowserName(browser);
 
         switch (os.toLowerCase()) {
             case "win11", "win" -> caps.setPlatform(Platform.WINDOWS);
@@ -53,6 +53,7 @@ public class TestBase {
 //        sauceOptions.put("name", "<Regression>");
 //        caps.setCapability("sauce:options", sauceOptions);
 
+        Configuration.browser = browser;
         Configuration.remote = "http://192.168.56.1:4444/wd/hub";
         Configuration.browserCapabilities = caps;
         Configuration.browserSize = "1920x1080";
