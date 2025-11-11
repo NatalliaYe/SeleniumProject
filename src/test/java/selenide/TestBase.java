@@ -28,7 +28,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 @Feature("UI tests")
-//@Listeners({ SoftAsserts.class, ReportPortalTestNGListener.class })
+@Listeners(SoftAsserts.class)
 public class TestBase {
 
     @BeforeMethod
